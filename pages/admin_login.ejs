@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h2>Login to Admin-panel</h2>
+    <form action="/admin/login" method="POST">
+        <div class="form-group">
+            <input type="text" name="Name" class="form-control" placeholder="Name..." required>
+        </div>
+        <div class="form-group">
+            <input type="text" name="Login" class="form-control" placeholder="Login..." required>
+        </div>
+        <div class="form-group">
+            <input type="password" name="Password" class="form-control" placeholder="Password..." required>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    
+</div>
+</body>
+</html>

@@ -1,0 +1,79 @@
+﻿
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> 
+<script>
+
+  window.onload = function() {
+
+  var btn = document.getElementById('btn');
+  var errorContainer = document.getElementById('errorMsg'); 
+  btn.onclick = sendData;
+
+  function sendData() {
+  var xhr = new XMLHttpRequest();
+
+  xhr.open('POST','/add/newItem');
+
+
+  var inputs = document.getElementsByTagName('input');
+
+              // валидация ввода пользователя 
+              for (var i = 0; i < inputs.length - 1; i++) { 
+              
+                  if (inputs[i].value == '') { 
+                 
+                    // обработка ошибок 
+                    errorContainer.innerHTML = 'Error! Empty Field!'
+                    console.log('Empty Field!'); 
+                    return;  
+                  
+                    }
+              } 
+              
+              errorContainer.innerHTML = ''; 
+              
+              var item = {
+                Name: inputs[0].value, 
+                Login: inputs[1].value, 
+                Password: inputs[2].value, 
+                Date: inputs[3].value, 
+                Age: inputs[4].value
+              }; 
+              
+              var data = JSON.stringify(item); 
+              
+              xhr.setRequestHeader('Content-Type', 'application/json'); 
+              
+              xhr.send(data); 
+              
+          
+
+            
+      } 
+      
+                
+   }
+</script>
+<div class="panel well">
+    <h3>Add item!</h3>
+    <div class="form-group">
+        <label>Name: <input type="text" class="form-control" /></label> 
+    </div>
+    <div class="form-group">
+        <label>Login: <input type="text" class="form-control" /></label>
+    </div>
+    <div class="form-group">
+        <label>Password: <input type="text" class="form-control" /></label> 
+    </div>
+    <div class="form-group">
+        <label>Date: <input type="date" class="form-control" /></label>
+    </div>
+    <div class="form-group">
+        <label>Age: <input type="number" class="form-control" /></label> 
+    </div>
+ 
+    
+    <div class="form-group">
+        <button class="btn btn-lg btn-info" href="/" id="btn">Apply</button> 
+        <h5 style="color: red; font-weight: bold" id="errorMsg"><h5>
+    </div>
+</div>
